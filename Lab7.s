@@ -20,7 +20,7 @@ _start:
     out %al,%dx         # display, I/O address 0x700
     mov LED, %si        # holds the location of the first LED
     mov $7, %bx         # max amount of cycles 
-    mov $0, %cx         # holds the counter - starts at three as three led need to display to start
+    mov $0, %cx         # holds the counter 
     jmp loopr
 
 loopr:
@@ -31,7 +31,7 @@ loopr:
     mov charE, %al        # sends 'E' to the LED
     out %al, %dx          # displays led
     inc %dx               # moves %dx to port A
-    inc %cx               # incraments counter
+    inc %cx               # increments counter
     mov [%si + %cx], %al  # lights up next LED
     out %al, %dx          # displays LED
     dec %dx               # moves to port B 
@@ -44,7 +44,7 @@ loopr:
     dec %dx               # moves back to port B
     mov charS, %al        # sends 'S' to LED
     out %al, %dx          # displays 'S'
-    dec %cx               # deincraments counter once to be one more than the beginning
+    dec %cx               # decraments counter once to be one more than the beginning
     cmp %cx, %bx          # checks to see if max count has been reached
     jl loopr              # continues the loop to the right
     jmp loopl             # will start loop to the left once the end is reached
@@ -70,7 +70,7 @@ loopl:
     dec %dx               # moves back to port B
     mov charE, %al        # sends 'S' to LED
     out %al, %dx          # displays 'S'
-    inc %cx               # deincrements counter once to be one more than the beginning
+    inc %cx               # decrements counter once to be one more than the beginning
     cmp %cx, $0           # checks to see if the counter is back to zero
     jg loopl              # continues the loop moving the LEDs to the left
     jmp loopr             # if counter is 0 will start moving the LEDs to the right
