@@ -4,12 +4,9 @@ PortB .byte 0x700
 
 LED .byte 0x640 # address of first LED
 
-assuming LED are accessed through 1,2,3,...,8
-
 CharS .byte 0b01101101
 CharH .byte 0b01110110
 CharE .byte 0b01111001
-(a determines letter, b determines position)
 
 .section .text
 .globl _start
